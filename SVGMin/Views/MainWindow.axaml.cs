@@ -6,6 +6,8 @@ namespace SVGMin.Views
 {
     public partial class MainWindow : Window
     {
+        private bool ShowMin = false;
+        private SVGFile _svgFile;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,8 +29,9 @@ namespace SVGMin.Views
             if (fileSelected != null)
             {
                 TxtFileName.Text = fileSelected[0];
-                SVGFile svgFile = new SVGFile(fileSelected[0]);
-                TxtSVG.Text = svgFile.ReadFile();
+                _svgFile = new SVGFile(fileSelected[0]);
+                TxtSVG.Text = _svgFile.ReadFile();
+                _svgFile.Minify();
             }                
         }
 
@@ -41,6 +44,21 @@ namespace SVGMin.Views
             {
                 TxtFileName.Text = "Saving: "+fileSelected;
             }  
+        }
+
+        private void BtnMinOrig(object? sender, RoutedEventArgs e)
+        {
+            ShowMin = !ShowMin;
+            if (ShowMin)
+            {
+                TxtSVG.Text = _svgFile.Minified;
+                BtnMO.Content = "Show Original";
+            }
+            else
+            {
+                TxtSVG.Text = _svgFile.Contents;
+                BtnMO.Content = "Show Minified";
+            }
         }
     }
 }
