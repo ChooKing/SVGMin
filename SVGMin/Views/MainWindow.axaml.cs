@@ -1,3 +1,4 @@
+using System.IO;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using SVGMin.Models;
@@ -42,7 +43,7 @@ namespace SVGMin.Views
             var fileSelected = await fileDialog.ShowAsync(window);
             if (fileSelected != null)
             {
-                TxtFileName.Text = "Saving: "+fileSelected;
+                await File.WriteAllTextAsync(fileSelected, _svgFile.Minified);
             }  
         }
 
