@@ -16,10 +16,10 @@
             <Button Content="Open" Click="BtnFileOpen"></Button>
             <Button Content="Save" Click="BtnFileSave"></Button>
             <Button x:Name="BtnMO" Content="Show Minified" Click="BtnMinOrig"></Button>
-            <TextBlock x:Name="TxtFileName" Text= "No File Open"/>            
+            <TextBlock x:Name="TxtFileName" Text= "No File Open" Margin="10, 5"/>            
         </StackPanel>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
-            <TextBlock x:Name="TxtSVG" Text="Nothing"></TextBlock>
+            <TextBlock x:Name="TxtSVG" Text="" Margin="0 10"></TextBlock>
         </ScrollViewer>
                 
     </Grid>
